@@ -18,7 +18,7 @@ export function ConversationsProvider({children}) {
 
 
   return (
-    <ConversationsContext.Provider value={{conversations, createConversation}}>
+    <ConversationsContext.Provider value={{conversations, createConversation }}>
         {children}
     </ConversationsContext.Provider>
   )

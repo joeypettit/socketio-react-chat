@@ -50,8 +50,8 @@ function NewConversationModal({closeModal}) {
                 </Form.Group>
 
             ))}
-        
-            <Button className="mt-3" type="submit">Create Contact</Button>
+         
+            <Button className="mt-3" type="submit">Create Conversation</Button>
         </Form>
     </Modal.Body>
 </>
