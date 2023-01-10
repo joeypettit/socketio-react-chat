@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState} from 'react'
 import { Modal, Form, Button } from 'react-bootstrap';
 // import Contacts context from ContactsProvider
 import {useContacts} from './contexts/ContactsProvider';
@@ -9,7 +9,8 @@ function NewConversationModal({closeModal}) {
     // list of contacts from the contacts provider
     const {contacts} = useContacts();
     // list of conversations from conversations provider
-    const {conversations} = useConversations();
+    const {createConversation} = useConversations();
+
 
     const [selectedContactIds, setSelectedContactIds] = useState([]);
 
@@ -27,7 +28,7 @@ function NewConversationModal({closeModal}) {
 
     function handleSubmit(e){
         e.preventDefault();
-
+        createConversation(selectedContactIds);
         closeModal();
     }
 
