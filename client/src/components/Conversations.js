@@ -4,16 +4,22 @@ import { useConversations } from './contexts/ConversationsProvider';
 
  function Conversations() {
 
-  const conversations = useConversations();  
+  const {conversations, selectConversationIndex} = useConversations();  
 
 
   return (
     <ListGroup variant="flush">
     {conversations.map((conversation, index) => (
-      <ListGroup.Item key={index}>
-        {conversation.recipient.map((recipient)=>{
-          return recipient.name.join(', ');
-        })}
+      <ListGroup.Item 
+      key={index}
+      action
+      onClick={()=> selectConversationIndex(index)}
+      active={conversation.selected} 
+      >
+        {conversation.recipients.map((recipient)=>{
+          console.log('recipient', recipient);
+          return recipient.name
+        }).join(', ')}
       </ListGroup.Item>
       ))}
   </ListGroup>
