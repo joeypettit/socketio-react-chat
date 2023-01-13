@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { Form, InputGroup, Button } from "react-bootstrap";
 import { useConversations } from "./contexts/ConversationsProvider";
 
@@ -42,7 +42,9 @@ function OpenConversation() {
                 key={index}
                 ref={lastMessage ? scroll : null}
                 className={`my-1 d-flex flex-column ${
-                  message.fromMe ? "align-self-end" : ""
+                  message.fromMe
+                    ? "align-self-end align-items-end"
+                    : "align-items-start"
                 }`}
               >
                 <div
