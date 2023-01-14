@@ -17,7 +17,7 @@ export function SocketProvider({ children, id }) {
   // this will open a new socket
   useEffect(() => {
     // create new socket to server, attach id to socket
-    const newSocket = io("http://localhost:5000", { query: { id } });
+    const newSocket = io(window.location.origin, { query: { id } });
     // store socket to local state
     setSocket(newSocket);
     // this return will close the socket if user navigates away from app

@@ -18,7 +18,6 @@ function useLocalStorage(key, initialValue) {
   const [value, setValue] = useState(() => {
     //grab value from local storage
     const jsonValue = localStorage.getItem(prefixedKey);
-    console.log(`jsonValue`, jsonValue);
     // if the value DOES exist, set to default state value
     if (jsonValue !== null) {
       return JSON.parse(jsonValue);
@@ -38,7 +37,6 @@ function useLocalStorage(key, initialValue) {
   // we will set the new value to local storage
   useEffect(() => {
     //
-    console.log(`useEffect`, value);
     localStorage.setItem(prefixedKey, JSON.stringify(value));
   }, [prefixedKey, value]);
 

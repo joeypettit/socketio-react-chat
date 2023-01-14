@@ -4,6 +4,7 @@ import Conversations from "./Conversations";
 import Contacts from "./Contacts";
 import NewContactModal from "./NewContactModal";
 import NewConversationModal from "./NewConversationModal";
+import axios from "axios";
 
 // using keys to avoid hardcoding these in nav eventkey
 // so we can use these variables in other functionality
@@ -29,8 +30,6 @@ function Sidebar({ id }) {
     setModalOpen(false);
   }
 
-  console.log("render", activeKey);
-
   return (
     <div style={{ width: "250px" }} className="d-flex flex-column">
       <Tab.Container activeKey={activeKey} onSelect={setActiveKey}>
@@ -51,6 +50,16 @@ function Sidebar({ id }) {
           </Tab.Pane>
         </Tab.Content>
         <div className="p-2 border-top border-end small">
+          <button
+            onClick={() =>
+              axios({
+                method: "GET",
+                url: "api/hello/",
+              }).then(() => console.log("got it"))
+            }
+          >
+            GET
+          </button>
           Your Id: <span className="text-muted">{id}</span>
         </div>
         <Button onClick={() => setModalOpen(true)} className="rounded-0">

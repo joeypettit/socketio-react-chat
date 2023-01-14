@@ -7,7 +7,6 @@ import { SocketProvider } from "./contexts/SocketProvider";
 
 function App() {
   const [id, setId] = useLocalStorage("id");
-  console.log(`id is`, id);
 
   // wrap our dashboard in providers to provides contexts to all components
   const dashboard = (

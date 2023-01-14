@@ -1,17 +1,29 @@
-const io = require("socket.io")(5000, {
-  cors: {
-    origin: ["http://localhost:3000"],
-  },
-});
+// const express = require("express");
+// const app = express();
+
+// app.get("/api/hello/", (req, res) => {
+//   res.send("hello");
+// });
+
+// app.listen(5000, () => console.log("Example app listening on port 5000!"));
+
+const io = require("socket.io")(5000);
+// const io = require("socket.io")(5000, {
+//   cors: {
+//     origin: ["http://localhost:3000"],
+//   },
+// });
 
 // on connect with client do the following
 io.on("connection", (socket) => {
+  console.log("connected");
   // grab clients unique id (which persists on their local host)
   const id = socket.handshake.query.id;
   // put client in the room with their unique id
   socket.join(id);
 
   socket.on("send-message", ({ recipients, text }) => {
+    console.log("got sent message", text);
     // recipients does not include the sender so... For each recipient,
     // this function will remove that specific recipient from recipients and
     // add the sender of the message to recipients so that each recipient
